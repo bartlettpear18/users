@@ -1,9 +1,20 @@
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'JBrocks13', 
+    database: 'practice',
+});
+
+connection.connect();
+
 var users = {
     name: 'hlab',
     password: 'JBrocks13', 
 };
 
-function insert(input) {
+ exports.insert = function(input) {
     connection.query('insert into users set ?', input, function (err, result) {
         if(err) {
             console.log(err);
@@ -14,18 +25,18 @@ function insert(input) {
     })
 };
 
-function select() {
+exports.select = function() {
     connection.query('select * from users', function (err, result, field) {
         if(err) {
             console.log(err);
             return;
         } else{
-            console.log(result[3]);
+            console.log(result);
         }
     })
 };
 
-function selectName(id) {
+exports.selectName = function(id) {
     connection.query('select name from users where id = ?', id, function (err, result) {
         if(err) {
             console.log(err);
@@ -38,7 +49,7 @@ function selectName(id) {
     })
 };
 
-function selectPassword(name) {
+exports.selectPassword = function(name) {
     connection.query('select password from users where name = ?', name, function (err, result) {
         if(err) {
             console.log(err);
@@ -51,7 +62,7 @@ function selectPassword(name) {
     })
 }
 
-function passCheck(word, name) {
+exports.passCheck = function(word, name) {
     if (word.toUpperCase() == selectPassword(name))  {
         console.log('password is true');
     } else {
@@ -59,8 +70,3 @@ function passCheck(word, name) {
     }
 }
 
-//insert(users);
-//select();
-//selectName(4);
-selectPassword('Joel');
-//passCheck('JBrocks13','Joel');
