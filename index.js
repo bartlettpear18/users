@@ -1,8 +1,14 @@
 var users = require('./users.js');
 
+
+var user = {
+    name: 'Owen',
+    password: 'O\'Brien', 
+};
+
+
+//users.insert(user);
 users.select();
-//users.insert(users);
 //users.selectName(4);
 //users.selectPassword('Joel');
 //users.passCheck('JBrocks13','Joel');
-console.log('I\'m getting that hang of github');

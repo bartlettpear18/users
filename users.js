@@ -9,11 +9,6 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-var users = {
-    name: 'hlab',
-    password: 'JBrocks13', 
-};
-
  exports.insert = function(input) {
     connection.query('insert into users set ?', input, function (err, result) {
         if(err) {
